@@ -34,6 +34,7 @@
 
 .post-content {
     color: var(--content);
+    font-size: 1.0rem;
 }
 
 .post-content h3,
