@@ -11,6 +11,7 @@
 .post-description {
     margin-top: 10px;
     margin-bottom: 5px;
+    font-size: 1.2rem;
 }
 
 .post-meta,
@@ -34,7 +35,7 @@
 
 .post-content {
     color: var(--content);
-    font-size: 1.0rem;
+    font-size: 1.05rem;
 }
 
 .post-content h3,

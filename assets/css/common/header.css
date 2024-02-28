@@ -6,7 +6,7 @@
     margin-inline-start: auto;
     margin-inline-end: auto;
     line-height: var(--header-height);
-    font-family: monospace;
+    font-family: "Prompt", Arial, Helvetica, sans-serif;
     text-transform: lowercase;
 }
 
