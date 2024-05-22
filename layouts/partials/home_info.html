@@ -1,13 +1,15 @@
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>{{ .Title | markdownify }}</h1>
-    </header>
-    <div class="entry-content">
-        {{ .Content | markdownify }}
+    <div class="profile-picture-container">
+        <img draggable="false" src="{{ .imageUrl | absURL }}" class = "circular-profile-picture"/>
+        <div class="content-container">
+            <header class="entry-header">
+                <h1>{{ .title | markdownify }}</h1>
+            </header>
+            <div class="entry-content">
+                {{ .content | markdownify }}
+            </div>
+        </div>
     </div>
-    <footer class="entry-footer">
-        {{ partial "social_icons.html" site.Params.socialIcons }}
-    </footer>
 </article>
-{{- end -}}
+{{- end }}

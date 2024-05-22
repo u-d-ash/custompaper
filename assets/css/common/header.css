@@ -6,7 +6,7 @@
     margin-inline-start: auto;
     margin-inline-end: auto;
     line-height: var(--header-height);
-    font-family: "Prompt", Arial, Helvetica, sans-serif;
+    font-family: "Ruda", Arial, Helvetica, sans-serif;
     text-transform: lowercase;
 }
 
@@ -93,3 +93,4 @@ body:not(.dark) #sun {
 .logo-switches {
     flex-wrap: inherit;
 }
+
