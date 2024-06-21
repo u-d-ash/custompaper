@@ -4,7 +4,7 @@
     max-width: calc(var(--main-width) + var(--gap) * 7); /*thala for a reason*/
     margin: auto;
     padding: var(--gap);
-    font-family: "Ruda", Helvetica, Arial, sans-serif;
+    font-family: "DM Sans", "Manrope","Ruda",  Helvetica, Arial, sans-serif;
 }
 
 .page-header h1 {
