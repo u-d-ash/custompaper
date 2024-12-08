@@ -1,6 +1,44 @@
-<p>
-    <details class="toggle">
-      <summary markdown="span">{{ .Get "summary" | default "Toggle" | safeHTML }}</summary>
-      {{ .Inner | safeHTML }}
-    </details>
-</p>
+<style>
+  .toggle {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #1d1e20;
+    color: #fff;
+    border-radius: 5px;
+  }
+
+  .toggle::before {
+    content: "▶"; /* Closed triangle */
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+  }
+
+  .toggle.open::before {
+    transform: rotate(90deg); /* Rotates triangle to point downward */
+  }
+  
+  .toggle:hover {
+    background-color: #444;
+  }
+  
+  .toggle-content {
+    display: none;
+    padding-left: 20px; 
+    background-color: #1d1e20;
+    color: #ddd;
+  }
+  
+  .toggle.open + .toggle-content {
+    display: block;
+  }
+  </style>
+  
+  <div class="toggle" onclick="this.classList.toggle('open');">
+    {{ .Get 0 }}
+  </div>
+  <div class="toggle-content">
+    {{ .Inner }}
+  </div>
+  
