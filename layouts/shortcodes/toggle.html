@@ -33,12 +33,13 @@
   .toggle.open + .toggle-content {
     display: block;
   }
-  </style>
-  
-  <div class="toggle" onclick="this.classList.toggle('open');">
-    {{ .Get 0 }}
-  </div>
-  <div class="toggle-content">
-    {{ .Inner }}
-  </div>
-  
+</style>
+
+<div 
+  class="toggle {{ if eq (.Get 1) "open" }}open{{ end }}" 
+  onclick="this.classList.toggle('open');">
+  {{ .Get 0 }}
+</div>
+<div class="toggle-content">
+  {{ .Inner }}
+</div>
