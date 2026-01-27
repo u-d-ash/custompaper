@@ -1,0 +1,46 @@
+<style>
+  /* 1. Base State */
+  a.clean-link {
+    display: block;
+    
+    /* REDUCED GAP HERE */
+    margin-bottom: 0.5rem; /* Changed from 2rem to 0.5rem */
+    
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    
+    /* Force Kill Lines/Borders */
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 2. Hover State */
+  a.clean-link:hover {
+    transform: translateY(-3px); /* Slightly reduced pop height for tighter lists */
+    background-color: rgba(128, 128, 128, 0.05);
+    text-decoration: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 3. Safety for Children */
+  a.clean-link * {
+    text-decoration: none !important;
+    border: none !important;
+  }
+</style>
+
+<a href="{{ .Get 2 }}" class="clean-link">
+    <div style="margin-bottom: 0;">
+      <h3 style="margin-bottom: 0.2rem; line-height: 1.2; margin-top: 0;">
+        {{ .Get 0 }}
+      </h3>
+      
+      <p style="color: var(--five); margin-top: 0; margin-bottom: 0; line-height: 1.4;">
+        {{ .Get 1 }}
+      </p>
+    </div>
+</a>

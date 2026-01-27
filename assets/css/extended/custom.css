@@ -1,0 +1,429 @@
+/* assets/css/extended/custom.css */
+
+/* ==========================================================================
+   SECTION 1: THE NORMAL WORLD (Default State)
+   Define all standard fonts, colors, and layout rules here.
+   ========================================================================== */
+
+:root {
+  /* --- 1A. Normal Palette --- */
+  --one: #FFFFFF;        /* Light background */
+  --two: #E2E4E9;        /* Light card backgrounds */
+  --three: #C5CAD3;      /* Standard Link/Accent Color */
+  --four: #A8AFBD;    /* Subtitles */
+  --five: #8C95A7;
+
+  --font-weight-bold: 700;
+  
+  /* --- 1B. Normal Typography --- */
+  /* Change this font URL/Name to whatever you want for the normal site */
+  --font-world: 'Geologica', sans-serif; 
+  --font-weight-body: 200;
+  --font-weight-header: 700;
+  --letter-spacing-adj: 0px; /* Normal spacing */
+}
+
+/* Base Styles using Normal Variables */
+body {
+  background-color: var(--theme);
+  color: #212529; /* Standard text color */
+}
+
+/* Typography Application */
+body, p, li, span, div, a , hr{
+  font-family: var(--font-world) !important;
+  font-weight: var(--font-weight-body);
+  letter-spacing: var(--letter-spacing-adj);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-world) !important;
+  font-weight: var(--font-weight-header);
+}
+
+header, header a, header span, header div {
+  color: var(--one); /* Dark text for light background */
+}
+
+
+
+
+.content-container .entry-header * {
+  color: var(--two); /* or whichever variable you want */
+}
+
+.content-container .entry-content * {
+  color: var(--three); /* or whichever variable you want */
+}
+
+.content-container .social-media-icons * {
+  color: var(--four); /* or whichever variable you want */
+}
+
+.custom-message.normal-content * {
+  color: var(--two);
+}
+
+.post-header .post-title{
+    color: var(--one);
+    font-size: xx-large; /* Replace with your desired Normal color */
+}
+
+.post-header .post-meta {
+    color: #8a0000 /* Replace with your desired Normal color */
+}
+
+.post-content{
+  color : var(--two)
+}
+
+/* Normal Menu Specifics */
+#menu.normal-menu {
+  display: flex !important;
+    
+  align-items: center !important; 
+    
+  flex-direction: row;
+}
+
+strong, b, .bold {
+  font-weight: var(--font-weight-bold) !important;
+}
+
+p a, li a, span a, .entry-content a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important; /* Thin, elegant line */
+    text-underline-offset: 4px !important;     /* Push the line down slightly */
+    
+    /* Optional: Make the line a specific color (e.g., your accent color) */
+    text-decoration-color: var(--five) !important; 
+    
+    transition: all 0.2s ease;
+}
+
+/* On Hover: Make it bolder */
+p a:hover, li a:hover, span a:hover {
+    text-decoration-thickness: 2px !important;
+    color: var(--three) !important;
+}
+
+/* EXCEPTION: Don't underline the menu or buttons */
+header a, nav a, .button, .btn {
+    text-decoration: none !important;
+}
+
+/* Target the immediate parent of your links and the toggle button */
+/* Update this class in Section 4 of your CSS */
+.dimension-toggle-btn {
+    /* 1. FORCE FIXED DIMENSIONS */
+    /* This creates a stable container so the width never changes */
+width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+.nav-container, header { 
+    /* This creates the coordinate system for the button */
+    position: relative !important; 
+}
+
+
+#menu.normal-menu li:last-child {
+    position: absolute !important;
+    
+    /* 2. PIN IT TO THE RIGHT */
+    right: 0 !important; /* Adjust this value (e.g., 20px) to match your page padding */
+    
+    /* 3. VERTICAL CENTER */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    
+    /* 4. RESET SPACING INTERFERENCE */
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important; /* Remove the border if it was causing shifts */
+    width: 40px !important;  /* Keep the fixed width */
+    height: 40px !important;
+}
+
+
+
+
+/* ==========================================================================
+   SECTION 2: THE UPSIDE DOWN (Alternate Dimension)
+   Everything here OVERRIDES the normal world when the class is active.
+   ========================================================================== */
+
+body.upside-down-mode {
+  /* --- 2A. Upside Down Palette --- */
+
+  --one: #FFFFFF;        /* Light background */
+  --two: #E2E4E9;        /* Light card backgrounds */
+  --three: #C5CAD3;      /* Standard Link/Accent Color */
+  --four: #A8AFBD;    /* Subtitles */
+  --five: #8C95A7;
+  
+  /* --- 2B. Upside Down Typography --- */
+  /* Want a scary font? Change '--font-world' ONLY inside this block */
+  --font-weight-body: 300;
+  --font-weight-header: 700; /* Horror fonts often look better regular weight */
+  --letter-spacing-adj: 0.5px; /* Unsettling wide spacing */
+
+    --font-weight-bold: 500;
+}
+
+body.upside-down-mode {
+  background-color: var(--theme);
+  color: #212529;
+}
+
+body.upside-down-mode, 
+body.upside-down-mode p, 
+body.upside-down-mode li, 
+body.upside-down-mode span, 
+body.upside-down-mode div, 
+body.upside-down-mode a ,
+body.upside-down-mode hr{
+  font-family: 'Newsreader' !important;
+  font-weight: var(--font-weight-body);
+  letter-spacing: var(--letter-spacing-adj);
+}
+
+
+body.upside-down-mode h1, 
+body.upside-down-mode h2, 
+body.upside-down-mode h3, 
+body.upside-down-mode h4, 
+body.upside-down-mode h5, 
+body.upside-down-mode h6 {
+  font-family: 'Newsreader' !important;
+  font-weight: 600;
+}
+
+
+body.upside-down-mode header,
+body.upside-down-mode header a,
+body.upside-down-mode header span,
+body.upside-down-mode header div {
+  color: var(--one);
+}
+
+
+
+
+
+
+
+
+body.upside-down-mode .content-container .entry-header * {
+  color: var(--two);
+  font-weight : 400; /* or whichever variable you want */
+}
+
+body.upside-down-mode .content-container .entry-content{
+  color: var(--three);
+  font-size: large;
+  font-weight: 350;
+}
+
+.content-container .social-media-icons * {
+  color: var(--four) /* or whichever variable you want */
+}
+
+body.upside-down-mode .custom-message.upside-down-content * {
+  color: var(--two);
+}
+
+body.upside-down-mode .post-header .post-title{
+    color : var(--one) /* Replace with your desired Normal color */
+}
+
+body.upside-down-mode .post-header .post-meta *{
+    color: var(--two);
+    font-weight: 90; /* Replace with your desired Normal color */
+}
+
+body.upside-down-mode .post-content *{
+  color : var(--two);
+}
+
+body.upside-down-mode .dimension-toggle-btn {
+    /* 1. Change the Icon Color */
+    color: var(--one) !important; /* Currently: Stranger Things Red */
+    
+    /* Optional: If you want a background circle behind it */
+    /* background-color: #333333 !important; */
+    /* border-radius: 50%; */
+}
+
+/* Force the SVG to adopt this color */
+body.upside-down-mode .dimension-toggle-btn svg {
+    fill: currentColor !important;
+}
+
+.dimension-toggle-btn svg {
+    fill: currentColor !important;
+}
+
+
+
+
+
+
+/* 2. Change the Font of the Site Title / Logo */
+
+
+/* Fix Images (Prevent Sepia filter from ruining photos) */
+body.upside-down-mode img, 
+body.upside-down-mode video {
+  filter: none;
+}
+
+/* Upside Down Menu Specifics */
+body.upside-down-mode #menu-upsidedown.upsidedown-menu {
+  display: flex !important;
+}
+
+/* ==========================================================================
+   ADD TO SECTION 2: CHANGE LOGO TEXT CONTENT
+   ========================================================================== */
+
+
+
+
+
+/* Optional: Make links inside the text stand out */
+
+
+
+/* ==========================================================================
+   SECTION 3: THE PORTAL (Visibility Logic)
+   Strict rules to toggle content based on the mode. Do not edit styles here.
+   ========================================================================== */
+
+/* 1. Content Toggling */
+/* Default: Hide Upside Down Content */
+.upside-down-content { display: none !important; }
+.normal-content      { display: block !important; }
+
+/* Active: Swap Them */
+body.upside-down-mode .normal-content      { display: none !important; }
+body.upside-down-mode .upside-down-content { 
+  display: block !important; 
+  animation: fadeIn 1s ease-in; 
+}
+
+/* 2. Menu Toggling */
+/* Default: Hide Upside Down Menu */
+
+#menu-upsidedown.upsidedown-menu {
+  display: flex !important;
+    
+    /* 2. Vertically center ALL children (text and button) */
+  align-items: center !important; 
+    
+    /* 3. Keep them in a row */
+  flex-direction: row; 
+}
+
+#menu-upsidedown.upsidedown-menu li:last-child {
+    position: absolute !important;
+    
+    /* 2. PIN IT TO THE RIGHT */
+    right: 0 !important; /* Adjust this value (e.g., 20px) to match your page padding */
+    
+    /* 3. VERTICAL CENTER */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    
+    /* 4. RESET SPACING INTERFERENCE */
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important; /* Remove the border if it was causing shifts */
+    width: 40px !important;  /* Keep the fixed width */
+    height: 40px !important;
+}
+
+#menu-upsidedown.upsidedown-menu { display: none !important; }
+
+/* Active: Hide Normal Menu */
+body.upside-down-mode #menu.normal-menu { display: none !important; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* ==========================================================================
+   SECTION 4: UTILITIES (Layout & Animation)
+   Shared layout rules and the "Blackout" curtain effect.
+   ========================================================================== */
+
+/* Shared Menu Layout (Structure only, no colors) */
+#menu.normal-menu, 
+#menu-upsidedown.upsidedown-menu {
+  align-items: center !important;
+  width: auto !important;
+  margin-left: auto !important;
+  list-style: none;
+  padding: 0;
+}
+
+/* Add padding to the list so text doesn't hit the button */
+#menu.normal-menu, 
+#menu-upsidedown.upsidedown-menu {
+    padding-right: 60px !important; /* Button width (40px) + Gap (20px) */
+}
+
+/* Shared Menu Item Spacing */
+#menu.normal-menu li, 
+#menu-upsidedown.upsidedown-menu li {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* The Toggle Button (Dimension Switcher) */
+.dimension-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: currentColor; /* Adopts the color of whatever world it is in */
+}
+
+/* The Cinematic Curtain (Blackout Transition) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 999999;
+  background-color: #050505;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.animate-exit::before {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@keyframes curtainFadeOut {
+  0%   { opacity: 1; pointer-events: all; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+body.animate-enter::before {
+  animation: curtainFadeOut 0.8s ease-out forwards;
+}
+
+
+
+
+

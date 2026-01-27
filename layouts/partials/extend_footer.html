@@ -1,3 +1,53 @@
-{{- /* Footer custom content area start */ -}}
-{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
-{{- /* Footer custom content area end */ -}}
+<script>
+    const toggleBtns = document.querySelectorAll('.dimension-toggle-btn');
+    const body = document.body;
+
+    // --- 1. HANDLE PAGE LOAD (ENTRY ANIMATION) ---
+    function handleEntry() {
+        const justFlipped = sessionStorage.getItem('is-flipping') === 'true';
+        
+        // Apply Mode Immediately (Under the cover of darkness)
+        if (localStorage.getItem('dimension') === 'upside-down') {
+            body.classList.add('upside-down-mode');
+        } else {
+            body.classList.remove('upside-down-mode');
+        }
+
+        // If we just arrived, fade the curtain OUT
+        if (justFlipped) {
+            body.classList.add('animate-enter');
+            sessionStorage.removeItem('is-flipping');
+            
+            // Clean up class after animation
+            setTimeout(() => {
+                body.classList.remove('animate-enter');
+            }, 850);
+        }
+    }
+
+    handleEntry();
+
+
+    // --- 2. HANDLE CLICK (EXIT ANIMATION) ---
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // A. Fade Curtain IN (Cover the screen)
+            body.classList.add('animate-exit');
+
+            // B. Toggle State Logic
+            const isCurrentlyUpsideDown = body.classList.contains('upside-down-mode');
+            const nextMode = !isCurrentlyUpsideDown;
+            localStorage.setItem('dimension', nextMode ? 'upside-down' : 'normal');
+
+            // C. Set Flag
+            sessionStorage.setItem('is-flipping', 'true');
+
+            // D. Redirect (Wait 500ms for curtain to be fully black)
+            setTimeout(() => {
+                window.location.href = "{{ site.BaseURL }}";
+            }, 500); 
+        });
+    });
+</script>

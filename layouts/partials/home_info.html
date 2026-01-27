@@ -1,32 +1,67 @@
-{{- with site.Params.homeInfoParams }}
-<article class="first-entry home-info">
-    <div class="profile-picture-container">
-        <img draggable="false" src="{{ .imageUrl | absURL }}" class = "circular-profile-picture"/>
-        <div class="content-container">
-            <header class="entry-header">
-                <h1>{{ .title | markdownify }}</h1>
-            </header>
-            <div class="entry-content">
-                {{ .content | markdownify }}
-            </div>
-            <div class="social-media-icons" style="margin-top: 10px;">
-                <a href="https://www.instagram.com/u_d_ash_/_" target="_blank" style="color: inherit; margin-right: 10px;">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://linkedin.com/in/u8d8ash8" target="_blank" style="color: inherit; margin-right: 10px;">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/u-d-ash" target="_blank" style="color: inherit; margin-right: 10px;">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://music.apple.com/profile/u_d_baba" target="_blank" style="color: inherit; margin-right: 10px;">
-                    <i class="fa-solid fa-music"></i>
-                </a>
-                <a href="https://boxd.it/amSmP" target="_blank" style="color: inherit; margin-right: 10px;">
-                    <i class="fab fa-letterboxd"></i> <!-- Assuming Font Awesome has a Letterboxd icon -->
-                </a>
+
+<div class="normal-content">
+    {{- with site.Params.homeInfoParams }}
+    <article class="first-entry home-info">
+        <div class="profile-picture-container">
+            {{- /* Normal Avatar */ -}}
+            <img draggable="false" src="{{ .imageUrl | absURL }}" class="circular-profile-picture"/>
+            
+            <div class="content-container">
+                <header class="entry-header" class="special-gothic-expanded-one-regular">
+                    <h1>{{ .title | markdownify }}</h1>
+                </header>
+                <div class="entry-content">
+                    {{ .content | markdownify }}
+                </div>
+                
+                {{- /* Normal Social Icons (Hardcoded) */ -}}
+                <div class="social-media-icons" style="margin-top: 10px;">
+                    <a href="https://www.instagram.com/u_d_ash_/_" target="_blank" style="color: inherit; margin-right: 10px;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://music.apple.com/profile/u_d_baba" target="_blank" style="color: inherit; margin-right: 10px;">
+                        <i class="fa-solid fa-music"></i>
+                    </a>
+                    <a href="https://boxd.it/amSmP" target="_blank" style="color: inherit; margin-right: 10px;">
+                        <i class="fab fa-letterboxd"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</article>
-{{- end }}
+    </article>
+    {{- end }}
+</div>
+
+{{- /* ============================================
+       2. UPSIDE DOWN PROFILE (Hidden by default)
+       ============================================ */ -}}
+<div class="upside-down-content" style="display: none;">
+    {{- with site.Params.upsideDownInfoParams }}
+    <article class="first-entry home-info">
+        <div class="profile-picture-container">
+            {{- /* Upside Down Avatar (Reads from upsideDownInfoParams in config) */ -}}
+            <img draggable="false" src="{{ .imageUrl | absURL }}" class="circular-profile-picture"/>
+            
+            <div class="content-container">
+                <header class="entry-header">
+                    <h1>{{ .title | markdownify }}</h1>
+                </header>
+                <div class="entry-content">
+                    {{ .content | markdownify }}
+                </div>
+                
+                {{- /* Upside Down Social Icons */ -}}
+                {{- /* EDIT THESE LINKS BELOW FOR THE DARK DIMENSION */ -}}
+                <div class="social-media-icons" style="margin-top: 10px;">
+                    <a href="https://github.com/u-d-ash" target="_blank" style="color: inherit; margin-right: 10px;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/u8d8ash8" target="_blank" style="color: inherit; margin-right: 10px;">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    </div>
+            </div>
+        </div>
+    </article>
+    {{- end }}
+</div>
