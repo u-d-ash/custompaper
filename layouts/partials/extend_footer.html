@@ -2,49 +2,66 @@
     const toggleBtns = document.querySelectorAll('.dimension-toggle-btn');
     const body = document.body;
 
-    // --- 1. HANDLE PAGE LOAD (ENTRY ANIMATION) ---
+    // --- 1. HANDLE PAGE LOAD & URL CHECK ---
     function handleEntry() {
-        const justFlipped = sessionStorage.getItem('is-flipping') === 'true';
-        
-        // Apply Mode Immediately (Under the cover of darkness)
-        if (localStorage.getItem('dimension') === 'upside-down') {
+        // A. Check the URL for a specific mode request
+        const urlParams = new URLSearchParams(window.location.search);
+        const modeParam = urlParams.get('mode');
+
+        // B. If the URL demands a mode, save it to memory immediately
+        if (modeParam === 'upsidedown') {
+            localStorage.setItem('dimension', 'upside-down');
+            
+            // Optional: Clean the URL in the address bar so it looks normal after loading
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+            
+        } else if (modeParam === 'normal') {
+            localStorage.setItem('dimension', 'normal');
+            
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+        }
+
+        // C. Apply the Theme based on memory (which we just updated if needed)
+        const isUpsideDown = localStorage.getItem('dimension') === 'upside-down';
+        if (isUpsideDown) {
             body.classList.add('upside-down-mode');
         } else {
             body.classList.remove('upside-down-mode');
         }
 
-        // If we just arrived, fade the curtain OUT
+        // D. Play Entry Animation (if returning from a flip)
+        const justFlipped = sessionStorage.getItem('is-flipping') === 'true';
         if (justFlipped) {
             body.classList.add('animate-enter');
             sessionStorage.removeItem('is-flipping');
             
-            // Clean up class after animation
             setTimeout(() => {
                 body.classList.remove('animate-enter');
             }, 850);
         }
     }
 
+    // Run immediately on load
     handleEntry();
 
 
-    // --- 2. HANDLE CLICK (EXIT ANIMATION) ---
+    // --- 2. HANDLE TOGGLE BUTTON CLICK ---
     toggleBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // A. Fade Curtain IN (Cover the screen)
+            // Cover the screen
             body.classList.add('animate-exit');
 
-            // B. Toggle State Logic
+            // Swap the memory
             const isCurrentlyUpsideDown = body.classList.contains('upside-down-mode');
             const nextMode = !isCurrentlyUpsideDown;
             localStorage.setItem('dimension', nextMode ? 'upside-down' : 'normal');
-
-            // C. Set Flag
             sessionStorage.setItem('is-flipping', 'true');
 
-            // D. Redirect (Wait 500ms for curtain to be fully black)
+            // Redirect to the base URL (clean slate)
             setTimeout(() => {
                 window.location.href = "{{ site.BaseURL }}";
             }, 500); 
