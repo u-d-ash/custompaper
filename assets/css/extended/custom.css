@@ -41,6 +41,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-header);
 }
 
+
+
 header, header a, header span, header div {
   color: var(--one); /* Dark text for light background */
 }
@@ -66,7 +68,7 @@ header, header a, header span, header div {
 
 .post-header .post-title{
     color: var(--one);
-    font-size: xx-large; /* Replace with your desired Normal color */
+    font-size: 2.25rem; /* Replace with your desired Normal color */
 }
 
 .post-header .post-meta {
@@ -74,8 +76,36 @@ header, header a, header span, header div {
 }
 
 .post-content{
-  color : var(--two)
+  color : var(--two);
+  font-size : 1rem;
 }
+
+
+.post-content h1{
+  font-size: 1.75rem;
+}
+
+
+.post-content h2{
+  font-size: 1.625rem;
+}
+
+.post-content h3{
+  font-size: 1.5rem;
+}
+
+.post-content h4{
+  font-size: 1.375rem;
+}
+
+.post-content h5{
+  font-size: 1.250rem;
+}
+
+.post-content h6{
+  font-size: 1.125rem;
+}
+
 
 /* Normal Menu Specifics */
 #menu.normal-menu {
